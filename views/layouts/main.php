@@ -60,15 +60,23 @@ AppAsset::register($this);
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
+
+        <?php if(!empty($this->blocks['beforeContent'])) echo
+        $this->blocks['beforeContent']; ?>
+
         <?= $content ?>
     </div>
 </div>
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <?php if (!empty($this->blocks['footer'])):
+            echo $this->blocks['footer'] ?>
+        <?php else: ?>
+            <p class="pull-left">&copy; My Company <?= date('Y')
+                ?></p>
+            <p class="pull-right"><?= Yii::powered() ?></p>
+        <?php endif; ?>
     </div>
 </footer>
 

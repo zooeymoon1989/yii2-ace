@@ -122,4 +122,10 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+
+
+    public function actionBlocks()
+    {
+        return $this->render('blocks');
+    }
 }
